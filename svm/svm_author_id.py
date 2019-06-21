@@ -20,6 +20,18 @@ from email_preprocess import preprocess
 features_train, features_test, labels_train, labels_test = preprocess()
 
 
+ clf = svm.SVC(gamma='scale', decision_function_shape='ovo')
+clf.fit(X, Y) 
+SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0,
+    decision_function_shape='ovo', degree=3, gamma='scale', kernel='rbf',
+    max_iter=-1, probability=False, random_state=None, shrinking=True,
+    tol=0.001, verbose=False)
+dec = clf.decision_function([[1]])
+dec.shape[1] # 4 classes: 4*3/2 = 6
+6
+ clf.decision_function_shape = "ovr"
+ dec = clf.decision_function([[1]])
+ dec.shape[1] # 4 classes
 
 
 #########################################################
